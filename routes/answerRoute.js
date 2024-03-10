@@ -6,7 +6,7 @@ const { getAnswerForQuestion, postAnswer } = require("../controller/answerContro
 const authMiddleware = require("../middleware/authMiddleware");
 
 Router.post("/:questionid/answers", authMiddleware, postAnswer)
-Router.get("/:questionid",authMiddleware,  getAnswerForQuestion);
+Router.get("/:questionid",  getAnswerForQuestion);
 
 
 module.exports = Router;
