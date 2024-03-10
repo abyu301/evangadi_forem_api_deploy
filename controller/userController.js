@@ -36,7 +36,7 @@ async function register(req, res) {
       "INSERT INTO users (username, firstname, lastname, email, password) VALUES (?,?,?,?,?)",
       [username, firstname, lastname, email, hashedPassword]
     );
-    // console.log(savedUser[0]);
+    console.log(savedUser[0]);
 
     return res.status(StatusCodes.CREATED).json({ msg: "User registered" });
   } catch (error) {

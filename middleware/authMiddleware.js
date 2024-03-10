@@ -10,13 +10,10 @@ const JWT_SECRET = process.env.JWT_SECRET;
 function authMiddleware(req, res, next) {
   const authHeader = req.headers.authorization;
   
-  // Check if the request is for the logout route
+ 
   if (req.path === "/logout") {
-    // Clear the JWT token by setting it to null or removing it from cookies/local storage, depending on your client setup
-    // For example, if using cookies:
-    res.clearCookie("jwtToken"); // Change "jwtToken" to your actual cookie name
     
-    // Redirect the user to the login page or any other appropriate page
+    res.clearCookie("jwtToken"); 
     return res.redirect('/login');
   }
 
