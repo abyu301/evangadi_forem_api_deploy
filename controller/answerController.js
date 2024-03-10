@@ -14,7 +14,7 @@ async function postAnswer(req, res) {
 
     try {
         await dbConnection.query(
-            "INSERT INTO answertable (answer,answerCodeBlock, usersid, questionid) VALUES (?, ?, ?, ?)",
+            "INSERT INTO answerTable (answer,answerCodeBlock, usersid, questionid) VALUES (?, ?, ?, ?)",
             [answer,answerCodeBlock, usersid, questionid]
         );
         return res.status(StatusCodes.CREATED).json({ msg: "Answer posted successfully" });
@@ -37,7 +37,7 @@ async function getAnswerForQuestion(req, res) {
     try {
         const answers = await dbConnection.query(`
             SELECT a.*, u.username AS username
-            FROM answertable a
+            FROM answerTable a
             INNER JOIN users u ON a.usersid = u.usersid
             WHERE a.questionid = ?
             ORDER BY a.answerid DESC
