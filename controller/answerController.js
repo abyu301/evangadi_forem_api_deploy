@@ -14,7 +14,7 @@ async function postAnswer(req, res) {
 
     try {
         await dbConnection.query(
-            "INSERT INTO answerTable (answer,answerCodeBlock, usersid, questionid) VALUES (?, ?, ?, ?)",
+            "INSERT INTO answerTable (answer, answerCodeBlock, usersid, questionid) VALUES (?, ?, ?, ?)",
             [answer,answerCodeBlock, usersid, questionid]
         );
         return res.status(StatusCodes.CREATED).json({ msg: "Answer posted successfully" });
