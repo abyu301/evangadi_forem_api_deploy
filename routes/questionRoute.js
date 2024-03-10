@@ -6,8 +6,8 @@ const { getAllQuestions} = require("../controller/questionController");
 const { singleQuestion } = require("../controller/questionController");
 const authMiddleware = require("../middleware/authMiddleware");
 
-Router.get("/all-questions",authMiddleware,  getAllQuestions);
+Router.get("/all-questions",  getAllQuestions);
 Router.post("/add-questions",authMiddleware,  postQuestion);
-Router.get("/:questionid",authMiddleware,  singleQuestion);
+Router.get("/:questionid",  singleQuestion);
 
 module.exports = Router;
