@@ -96,11 +96,15 @@ async function login(req, res) {
 }
 
 async function logout(req, res) {
- 
-  res.clearCookie("jwt-token");
-
-  res.status(StatusCodes.OK).json({ msg: "User logged out successfully" });
+  try {
+      res.clearCookie("jwt-token");
+      res.status(StatusCodes.OK).json({ msg: "User logged out successfully" });
+  } catch (error) {
+      console.error("Error logging out:", error.message);
+      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ msg: "Something went wrong, try again later!" });
+  }
 }
+
 
 
 
