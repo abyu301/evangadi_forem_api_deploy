@@ -113,14 +113,6 @@ async function checkUser(req, res) {
     const decodedToken = req.user;
     const { username, firstname, usersid, email, } = decodedToken;
 
-
-    // if (!req.body || !req.body.username || !req.body.usersid) {
-    //   return res.status(StatusCodes.BAD_REQUEST).json({ msg: "Invalid user data" });
-    // }
-
-    // const username = req.body.username;
-    // const usersid = req.body.usersid;
-
     res.status(StatusCodes.OK).json({ msg: "valid user", username, firstname, usersid, email });
   } catch (error) {
     console.error("Error occurred:", error.message);
