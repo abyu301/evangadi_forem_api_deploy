@@ -94,16 +94,26 @@ async function login(req, res) {
       .json({ msg: "Something went wrong, try again later!" });
   }
 }
-
 async function logout(req, res) {
   try {
-      res.clearCookie("jwt-token");
-      res.status(StatusCodes.OK).json({ msg: "User logged out successfully" });
+      // Clear the jwt-token cookie
+      res.clearCookie('jwt-token');
+
+      // Remove specific items from local storage
+      localStorage.removeItem('questionsData');
+      localStorage.removeItem('question');
+      localStorage.removeItem('userData');
+      localStorage.removeItem('token');
+
+      res.status(StatusCodes.OK).json({ msg: 'User logged out successfully' });
   } catch (error) {
-      console.error("Error logging out:", error.message);
-      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ msg: "Something went wrong, try again later!" });
+      console.error('Error logging out:', error.message);
+      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: 'Internal server error' });
   }
 }
+
+module.exports = logout;
+
 
 
 
