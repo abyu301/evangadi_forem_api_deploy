@@ -96,10 +96,7 @@ async function login(req, res) {
 }
 async function logout(req, res) {
   try {
-      // Clear the jwt-token cookie
       res.clearCookie('jwt-token');
-
-      // Remove specific items from local storage
       localStorage.removeItem('questionsData');
       localStorage.removeItem('question');
       localStorage.removeItem('userData');
